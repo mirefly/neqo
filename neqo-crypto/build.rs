@@ -130,7 +130,10 @@ fn get_bash() -> PathBuf {
 }
 
 fn build_nss(dir: PathBuf) {
-    let mut build_nss = vec![String::from("./build.sh")];
+    let mut build_nss = vec![
+        String::from("./build.sh"),
+        String::from("-Ddisable_tests=1"),
+    ];
     if is_debug() {
         build_nss.push(String::from("--static"));
     } else {
